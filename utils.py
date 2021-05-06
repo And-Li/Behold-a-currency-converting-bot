@@ -30,5 +30,5 @@ class CryptoConverter:
             raise APIException(f'Impossible to process amount {amount}:\ninput proper quantity consisting of numbers.')
 
         r = requests.get(f'https://min-api.cryptocompare.com/data/price?fsym={quote_ticker}&tsyms={base_ticker}')
-        total_base = json.loads(r.content)[keys[base]]
+        total_base = float(json.loads(r.content)[keys[base]])
         return total_base
