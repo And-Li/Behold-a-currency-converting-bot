@@ -36,7 +36,8 @@ def convert(message: telebot.types.Message):
     except Exception as e:
         bot.reply_to(message, f'Failed to process the operation of \n{e}')
     else:
-        text = f'Price of {amount} {quote} in {base}s - {total_base}'
+        z = total_base * float(amount)
+        text = f'Price of {amount} {quote} in {base}s - {z}'
         bot.send_message(message.chat.id, text)
 
 
