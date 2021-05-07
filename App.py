@@ -37,8 +37,12 @@ def convert(message: telebot.types.Message):
         bot.reply_to(message, f'Failed to process the operation of \n{e}')
     else:
         z = total_base * float(amount)
-        text = f'Price of {amount} {quote} in {base}s - {z}'
-        bot.send_message(message.chat.id, text)
+        if float(amount) > 1:
+            text = f'Price of {amount} {quote}s in {base}s = {z}'
+            bot.send_message(message.chat.id, text)
+        else:
+            text = f'Price of {amount} {quote} in {base}s = {z}'
+            bot.send_message(message.chat.id, text)
 
 
 bot.polling()
